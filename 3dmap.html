@@ -3,10 +3,12 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
   </head>
-  <body style="margin:0">
+  <body style="margin:0; background-color: #ccc;">
     <canvas id="mapCanvas"></canvas>
     <script>
       const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xcccccc); // Warna abu-abu
+
       const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('mapCanvas') });
       renderer.setSize(300, 300);
