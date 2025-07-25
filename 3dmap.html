@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
+  </head>
+  <body style="margin:0">
+    <canvas id="mapCanvas"></canvas>
+    <script>
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('mapCanvas') });
+      renderer.setSize(300, 300);
+
+      const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+      scene.add(light);
+
+      const loader = new THREE.GLTFLoader();
+      loader.load("https://static.wixstatic.com/media/test1.glb", function(glb) {
+        scene.add(gltf.scene);
+      });
+
+      camera.position.z = 5;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+    </script>
+  </body>
+</html>
